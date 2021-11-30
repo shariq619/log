@@ -9,27 +9,76 @@
         </div>
 
         <div class="card-body">
-            <form action="{{ route("admin.permissions.store") }}" method="POST" enctype="multipart/form-data">
+<!--            <form action="{{ route("admin.permissions.store") }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-                    <label for="title">Title*</label>
-                    <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}" required>
-                    @if($errors->has('title'))
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
+                    @if($errors->has('name'))
                         <p class="help-block">
-                            {{ $errors->first('title') }}
+                            {{ $errors->first('name') }}
                         </p>
                     @endif
-                    <p class="helper-block">
-                        {{ trans('cruds.permission.fields.title_helper') }}
-                    </p>
-                </div>
 
-                <h1 class="helper-block">Form is in progress</h1>
+                    <label for="email">Email*</label>
+                    <input type="email" id="name" name="email" class="form-control" value="{{ old('email') }}" required>
+                    @if($errors->has('email'))
+                        <p class="help-block">
+                            {{ $errors->first('email') }}
+                        </p>
+                    @endif
+
+                    <label for="name">Position*</label>
+                    <input type="text" id="position" name="position" class="form-control" value="{{ old('position') }}" required>
+                    @if($errors->has('position'))
+                        <p class="help-block">
+                            {{ $errors->first('position') }}
+                        </p>
+                    @endif
+
+                    <label for="name">Contact Person*</label>
+                    <input type="text" id="contact_person" name="contact_person" class="form-control" value="{{ old('contact_person') }}" required>
+                    @if($errors->has('contact_person'))
+                        <p class="help-block">
+                            {{ $errors->first('contact_person') }}
+                        </p>
+                    @endif
+
+                    <label for="name">Contact No.*</label>
+                    <input type="text" id="contact_no" name="contact_no" class="form-control" value="{{ old('contact_no') }}" required>
+                    @if($errors->has('contact_no'))
+                        <p class="help-block">
+                            {{ $errors->first('contact_no') }}
+                        </p>
+                    @endif
+
+                    <label for="name">ID No.*</label>
+                    <input type="text" id="id_no" name="id_no" class="form-control" value="{{ old('id_no') }}" required>
+                    @if($errors->has('id_no'))
+                        <p class="help-block">
+                            {{ $errors->first('id_no') }}
+                        </p>
+                    @endif
+
+                    <label for="name">District.*</label>
+                    <input type="text" id="district" name="district" class="form-control" value="{{ old('district') }}" required>
+                    @if($errors->has('district'))
+                        <p class="help-block">
+                            {{ $errors->first('district') }}
+                        </p>
+                    @endif
+
+                    <label for="name">Applicant OR Internal.*</label>
+                    <select name="applicant_or_internal" id="applicant_or_internal" class="form-control"  required>
+                            <option value="applicant">Applicant</option>
+                            <option value="internal">Internal</option>
+                    </select>
+                </div>
 
                 <div>
                     <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
                 </div>
-            </form>
+            </form>-->
         </div>
     </div>
 @endsection

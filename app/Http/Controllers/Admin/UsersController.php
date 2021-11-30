@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Notifications\UserNotify;
 use App\Role;
 use App\User;
 use Gate;
@@ -32,10 +33,26 @@ class UsersController extends Controller
         return view('admin.users.create', compact('roles'));
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
-        $user = User::create($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        $request->validate([
+            'name' => 'required',
+            'email' => 'email|required',
+            'position' => 'required',
+            'contact_person' => 'required',
+            'contact_no' => 'required',
+            'id_no' => 'required',
+            'district' => 'required',
+            'applicant_or_internal' => 'required',
+        ]);
+
+
+        $user = User::create($request->all() + ['password' => bcrypt('password')]);
+
+        $user->notify(new UserNotify($user->toArray()));
+
+        /*$user = User::create($request->all());
+        $user->roles()->sync($request->input('roles', []));*/
 
         return redirect()->route('admin.users.index');
 

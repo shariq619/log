@@ -19,5 +19,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('users', 'UsersController');
 
     Route::get('log-list', 'LogListController@index')->name('log.list');
+    //Route::post('log-list', 'LogListController@store')->name('log.list');
 
 });

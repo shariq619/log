@@ -29,16 +29,7 @@ class User extends Authenticatable
         'email_verified_at',
     ];
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-        'remember_token',
-        'email_verified_at',
-    ];
+    protected $guarded = [];
 
     public function getEmailVerifiedAtAttribute($value)
     {

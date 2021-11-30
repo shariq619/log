@@ -14,4 +14,20 @@ class LogListController extends Controller
         abort_if(Gate::denies('log_list'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.log-list.index');
     }
+
+    public function store(Request $request)
+    {
+
+        /*$request->validate([
+           'name' => 'required',
+           'email' => 'email|required',
+           'position' => 'required',
+           'contact_person' => 'required',
+           'contact_no' => 'required',
+           'id_no' => 'required',
+           'district' => 'required',
+           'applicant_or_internal' => 'required',
+        ]);*/
+
+    }
 }

@@ -15,6 +15,14 @@ class CreateUsersTable extends Migration
 
             $table->string('email');
 
+            $table->string('position')->nullable();
+            $table->string('contact_person')->nullable();
+            $table->string('contact_no')->nullable();
+            $table->string('id_no')->nullable();
+            $table->string('district')->nullable();
+            $table->string('applicant_or_internal')->nullable();
+
+
             $table->datetime('email_verified_at')->nullable();
 
             $table->string('password');
