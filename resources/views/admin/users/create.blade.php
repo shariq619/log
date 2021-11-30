@@ -13,7 +13,7 @@
             @csrf
             <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                 <label for="name">Name*</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
+                <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" >
                 @if($errors->has('name'))
                     <p class="help-block">
                         {{ $errors->first('name') }}
@@ -21,7 +21,7 @@
                 @endif
 
                 <label for="email">Email*</label>
-                <input type="email" id="name" name="email" class="form-control" value="{{ old('email') }}" required>
+                <input type="email" id="name" name="email" class="form-control" value="{{ old('email') }}" >
                 @if($errors->has('email'))
                     <p class="help-block">
                         {{ $errors->first('email') }}
@@ -29,7 +29,7 @@
                 @endif
 
                 <label for="name">Position*</label>
-                <input type="text" id="position" name="position" class="form-control" value="{{ old('position') }}" required>
+                <input type="text" id="position" name="position" class="form-control" value="{{ old('position') }}" >
                 @if($errors->has('position'))
                     <p class="help-block">
                         {{ $errors->first('position') }}
@@ -37,7 +37,7 @@
                 @endif
 
                 <label for="name">Contact Person*</label>
-                <input type="text" id="contact_person" name="contact_person" class="form-control" value="{{ old('contact_person') }}" required>
+                <input type="text" id="contact_person" name="contact_person" class="form-control" value="{{ old('contact_person') }}" >
                 @if($errors->has('contact_person'))
                     <p class="help-block">
                         {{ $errors->first('contact_person') }}
@@ -45,7 +45,7 @@
                 @endif
 
                 <label for="name">Contact No.*</label>
-                <input type="text" id="contact_no" name="contact_no" class="form-control" value="{{ old('contact_no') }}" required>
+                <input type="text" id="contact_no" name="contact_no" class="form-control" value="{{ old('contact_no') }}" >
                 @if($errors->has('contact_no'))
                     <p class="help-block">
                         {{ $errors->first('contact_no') }}
@@ -53,7 +53,7 @@
                 @endif
 
                 <label for="name">ID No.*</label>
-                <input type="text" id="id_no" name="id_no" class="form-control" value="{{ old('id_no') }}" required>
+                <input type="text" id="id_no" name="id_no" class="form-control" value="{{ old('id_no') }}" >
                 @if($errors->has('id_no'))
                     <p class="help-block">
                         {{ $errors->first('id_no') }}
@@ -61,7 +61,7 @@
                 @endif
 
                 <label for="name">District.*</label>
-                <input type="text" id="district" name="district" class="form-control" value="{{ old('district') }}" required>
+                <input type="text" id="district" name="district" class="form-control" value="{{ old('district') }}" >
                 @if($errors->has('district'))
                     <p class="help-block">
                         {{ $errors->first('district') }}
@@ -69,10 +69,18 @@
                 @endif
 
                 <label for="name">Applicant OR Internal.*</label>
-                <select name="applicant_or_internal" id="applicant_or_internal" class="form-control"  required>
+                <select name="applicant_or_internal" id="applicant_or_internal" class="form-control"  >
                     <option value="applicant">Applicant</option>
                     <option value="internal">Internal</option>
                 </select>
+
+                <label for="name">Role.*</label>
+                <select name="role" id="role" class="form-control"  >
+                    @foreach($roles as $id => $roles)
+                        <option value="{{ $id }}" >{{ $roles }}</option>
+                    @endforeach
+                </select>
+
             </div>
 
             <div>

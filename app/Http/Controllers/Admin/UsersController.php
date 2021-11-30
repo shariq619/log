@@ -37,7 +37,7 @@ class UsersController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'email|required',
+            'email' => 'email|required|unique:users',
             'position' => 'required',
             'contact_person' => 'required',
             'contact_no' => 'required',
@@ -47,14 +47,16 @@ class UsersController extends Controller
         ]);
 
 
-        $user = User::create($request->all() + ['password' => bcrypt('password')]);
+        $user = User::create($request->except('role') + ['password' => bcrypt('password')]);
+        $user->roles()->sync($request->role);
 
         $user->notify(new UserNotify($user->toArray()));
+
 
         /*$user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));*/
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('message','User created successfully');
 
     }
 

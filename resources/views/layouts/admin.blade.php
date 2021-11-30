@@ -19,6 +19,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <!-- Toaster -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <link href="{{ asset('css/material-dashboard.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     @yield('styles')
@@ -64,13 +67,13 @@
             </nav>
             <!-- Main content -->
             <section class="content" style="padding-top: 20px">
-                @if(session('message'))
+                {{--@if(session('message'))
                     <div class="row mb-2">
                         <div class="col-lg-12">
                             <div class="alert alert-success" role="alert">{{ session('message') }}</div>
                         </div>
                     </div>
-                @endif
+                @endif--}}
                 @if($errors->count() > 0)
                     <div class="alert alert-danger">
                         <ul class="list-unstyled">
@@ -114,6 +117,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/bootstrap-material-design.min.js') }}"></script>
+
+
+
+    <!-- Toastr js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+
+
+        @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true
+            }
+        toastr.success("{{ session('message') }}");
+        @endif
+
+
+
+                @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true
+            }
+        toastr.error("{{ session('error') }}");
+        @endif
+
+
+
+                @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true
+            }
+        toastr.info("{{ session('info') }}");
+        @endif
+
+                @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true
+            }
+        toastr.warning("{{ session('warning') }}");
+        @endif
+        @foreach ($errors->all() as $error)
+        toastr.error("{{$error}}")
+        @endforeach
+    </script>
+
+
+
+
+
     <script src="{{ asset('js/material-dashboard.js') }}"></script>
     <script>
         $(function() {

@@ -42,15 +42,13 @@ class UserNotify extends Notification
      */
     public function toMail($notifiable)
     {
-        $Id = $this->user['id'];
-        $name = $this->user['name'];
-        $url = "";
+        $email = $this->user['email'];
+        $url = url('/password/reset');
 
         return (new MailMessage)
-            ->subject('Your order is placed')
-            ->line('Your order tracking id is: ' . $Id)
-            ->line('Your order tracking id is: ' . $name)
-            ->action('Track order from here', $url)
+            ->subject('User Registeration')
+            ->line('Your email is: ' . $email)
+            ->action('Please reset your password from here', $url)
             ->line('Thank you for using our application!');
 
         //return (new MailMessage)->markdown('admin.emails.send_email');
