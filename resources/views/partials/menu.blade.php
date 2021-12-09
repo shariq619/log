@@ -69,23 +69,13 @@
             @endcan
 
 
-            @can('log_list')
-            <li class="nav-item">
-                <a href="{{route('admin.log.list')}}" class="nav-link">
-                    <p>
-                        <i class="fa fa-list-alt" aria-hidden="true"></i>
-                        <span>Log List</span>
-                    </p>
-                </a>
-            </li>
-            @endcan
+
+
             @can('region_access')
                 <li class="nav-item">
                     <a href="{{ route("admin.regions.index") }}"
                        class="nav-link {{ request()->is('admin/regions') || request()->is('admin/regions/*') ? 'active' : '' }}">
-                        <i class="fa-fw fas fa-user">
-
-                        </i>
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span>{{ trans('cruds.region.title') }}</span>
                     </a>
                 </li>
@@ -95,9 +85,7 @@
                 <li class="nav-item">
                     <a href="{{ route("admin.districts.index") }}"
                        class="nav-link {{ request()->is('admin/districts') || request()->is('admin/districts/*') ? 'active' : '' }}">
-                        <i class="fa-fw fas fa-user">
-
-                        </i>
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span>{{ trans('cruds.district.title') }}</span>
                     </a>
                 </li>
@@ -107,9 +95,7 @@
                 <li class="nav-item">
                     <a href="{{ route("admin.land_status.index") }}"
                        class="nav-link {{ request()->is('admin/land-status') || request()->is('admin/land-status/*') ? 'active' : '' }}">
-                        <i class="fa-fw fas fa-user">
-
-                        </i>
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span>{{ trans('cruds.land_status.title') }}</span>
                     </a>
                 </li>
@@ -120,22 +106,28 @@
                 <li class="nav-item">
                     <a href="{{ route("admin.species.index") }}"
                        class="nav-link {{ request()->is('admin/species') || request()->is('admin/species/*') ? 'active' : '' }}">
-                        <i class="fa-fw fas fa-user">
-
-                        </i>
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span>{{ trans('cruds.species.title') }}</span>
                     </a>
                 </li>
             @endcan
 
 
+            @can('log_list')
+                <li class="nav-item">
+                    <a href="{{route('admin.log.list')}}" class="nav-link">
+                        <p>
+                            <i class="fa fa-list-alt" aria-hidden="true"></i>
+                            <span>Log List</span>
+                        </p>
+                    </a>
+                </li>
+            @endcan
 
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <p>
-                        <i class="fas fa-fw fa-sign-out-alt">
-
-                        </i>
+                        <i class="fas fa-fw fa-sign-out-alt"></i>
                         <span>{{ trans('global.logout') }}</span>
                     </p>
                 </a>
