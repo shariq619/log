@@ -18,7 +18,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
+    // Region
+    Route::delete('regions/destroy', 'RegionController@massDestroy')->name('regions.massDestroy');
+    Route::resource('regions', 'RegionController');
+
+    // Region
+    Route::delete('districts/destroy', 'DistrictController@massDestroy')->name('districts.massDestroy');
+    Route::resource('districts', 'DistrictController');
+
+    // Land Status
+    Route::delete('land_status/destroy', 'LandStatusController@massDestroy')->name('land_status.massDestroy');
+    Route::resource('land_status', 'LandStatusController');
+
+    // Species
+    Route::delete('species/destroy', 'SpeciesController@massDestroy')->name('species.massDestroy');
+    Route::resource('species', 'SpeciesController');
+
     Route::get('log-list', 'LogListController@index')->name('log.list');
-    //Route::post('log-list', 'LogListController@store')->name('log.list');
+    Route::post('log-list', 'LogListController@store')->name('log.list');
 
 });

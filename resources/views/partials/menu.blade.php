@@ -79,7 +79,54 @@
                 </a>
             </li>
             @endcan
+            @can('region_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.regions.index") }}"
+                       class="nav-link {{ request()->is('admin/regions') || request()->is('admin/regions/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-user">
 
+                        </i>
+                        <span>{{ trans('cruds.region.title') }}</span>
+                    </a>
+                </li>
+            @endcan
+
+            @can('district_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.districts.index") }}"
+                       class="nav-link {{ request()->is('admin/districts') || request()->is('admin/districts/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-user">
+
+                        </i>
+                        <span>{{ trans('cruds.district.title') }}</span>
+                    </a>
+                </li>
+            @endcan
+
+            @can('land_status_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.land_status.index") }}"
+                       class="nav-link {{ request()->is('admin/land-status') || request()->is('admin/land-status/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-user">
+
+                        </i>
+                        <span>{{ trans('cruds.land_status.title') }}</span>
+                    </a>
+                </li>
+            @endcan
+
+
+            @can('species_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.species.index") }}"
+                       class="nav-link {{ request()->is('admin/species') || request()->is('admin/species/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-user">
+
+                        </i>
+                        <span>{{ trans('cruds.species.title') }}</span>
+                    </a>
+                </li>
+            @endcan
 
 
 
