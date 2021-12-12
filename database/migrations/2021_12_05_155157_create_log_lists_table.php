@@ -16,6 +16,7 @@ class CreateLogListsTable extends Migration
         Schema::create('log_lists', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('name');
             $table->string('license_no');
             $table->string('region_id');
             $table->string('district_id');
@@ -23,7 +24,7 @@ class CreateLogListsTable extends Migration
             $table->string('reduced_impact_logging');
             $table->string('market');
             $table->string('place_of_scalling');
-            $table->string('licensee_account_no');
+            $table->string('license_account_no');
             $table->string('date_scaled');
             $table->string('name_of_scaler');
             $table->string('registered_property_hammer_mark');

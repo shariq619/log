@@ -34,7 +34,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('species/destroy', 'SpeciesController@massDestroy')->name('species.massDestroy');
     Route::resource('species', 'SpeciesController');
 
-    Route::get('log-list', 'LogListController@index')->name('log.list');
+    Route::get('log-list', 'LogListController@index')->name('log.list.index');
+    Route::get('log-list-view/{logList}', 'LogListController@show')->name('log.list.show');
+    Route::get('log-list-create', 'LogListController@create')->name('log.list.create');
     Route::post('log-list', 'LogListController@store')->name('log.list');
+    Route::delete('log-list-delete/{logList}', 'LogListController@destroy')->name('log.list.destroy');
 
 });

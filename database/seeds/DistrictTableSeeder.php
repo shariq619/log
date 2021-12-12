@@ -19,11 +19,11 @@ class DistrictTableSeeder extends Seeder
             ],
             [
                 'region_id'      => '2',
-                'name'      => 'District 1'
+                'name'      => 'District 2'
             ],
             [
                 'region_id'      => '3',
-                'name'      => 'District 1'
+                'name'      => 'District 3'
             ]
         ];
 
