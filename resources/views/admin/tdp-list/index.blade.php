@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-    @can('species_create')
+    @can('tdp_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route("admin.log.list.create") }}">
-                    Add Log
+                <a class="btn btn-success" href="{{ route("admin.tdp.list.create") }}">
+                    Add TDP
                 </a>
             </div>
         </div>
@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
-                Logs
+                TDP
             </h4>
         </div>
 
@@ -57,25 +57,25 @@
                             </td>
 
                             <td>
-{{--                                @can('species_show')--}}
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.log.list.show', $log->id) }}">
+                                @can('tdp_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.tdp.list.show', $log->id) }}">
                                         {{ trans('global.view') }}
-                                    </a>
-{{--                                @endcan--}}
-
-                                @can('species_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.species.edit', $log->id) }}">
-                                        {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-{{--                                @can('species_delete')--}}
-                                    <form action="{{ route('admin.log.list.destroy', $log->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+{{--                                @can('tdp_edit')--}}
+{{--                                    <a class="btn btn-xs btn-info" href="{{ route('admin.tdp.edit', $log->id) }}">--}}
+{{--                                        {{ trans('global.edit') }}--}}
+{{--                                    </a>--}}
+{{--                                @endcan--}}
+
+                                @can('tdp_delete')
+                                    <form action="{{ route('admin.tdp.list.destroy', $log->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
-{{--                                @endcan--}}
+                                @endcan
 
                             </td>
 

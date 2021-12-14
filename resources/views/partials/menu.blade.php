@@ -113,12 +113,12 @@
             @endcan
 
 
-            @can('log_list')
+            @can('tdp_access')
                 <li class="nav-item">
-                    <a href="{{route('admin.log.list')}}" class="nav-link">
+                    <a href="{{route('admin.tdp.list.index')}}" class="nav-link">
                         <p>
                             <i class="fa fa-list-alt" aria-hidden="true"></i>
-                            <span>Log List</span>
+                            <span>TDP</span>
                         </p>
                     </a>
                 </li>

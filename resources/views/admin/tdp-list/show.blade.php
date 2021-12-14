@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
-                {{ trans('global.show') }} {{ trans('cruds.land_status.title') }}
+                TDP
             </h4>
         </div>
 

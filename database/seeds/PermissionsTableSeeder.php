@@ -106,7 +106,7 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'         => '17',
-                'title'      => 'log_list',
+                'title'      => 'tdp_access',
                 'created_at' => '2019-09-10 14:00:26',
                 'updated_at' => '2019-09-10 14:00:26',
             ],
@@ -238,6 +238,34 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-09-10 14:00:26',
                 'updated_at' => '2019-09-10 14:00:26',
             ],
+
+
+            [
+                'id'         => '38',
+                'title'      => 'tdp_create',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '39',
+                'title'      => 'tdp_edit',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '40',
+                'title'      => 'tdp_show',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '41',
+                'title'      => 'tdp_delete',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+
+
         ];
 
         Permission::insert($permissions);

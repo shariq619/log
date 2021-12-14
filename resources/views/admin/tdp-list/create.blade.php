@@ -4,12 +4,12 @@
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
-                Log List Form
+                TDP Form
             </h4>
         </div>
 
         <div class="card-body">
-            <form action="{{ route("admin.log.list") }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route("admin.tdp.list") }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col">

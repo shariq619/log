@@ -5,34 +5,34 @@ namespace App\Http\Controllers\Admin;
 use App\District;
 use App\Http\Controllers\Controller;
 use App\LandStatus;
-use App\LogList;
+use App\TdpList;
 use App\Region;
 use App\Species;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
-class LogListController extends Controller
+class TdpListController extends Controller
 {
 
     public function index()
     {
 
-        $logs = LogList::all();
+        $logs = TdpList::all();
 
-        return view('admin.log-list.index', compact('logs'));
+        return view('admin.tdp-list.index', compact('logs'));
     }
 
-    public function show(LogList $logList)
+    public function show(TdpList $logList)
     {
-        //abort_if(Gate::denies('land_status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('tdp_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.log-list.show', compact('logList'));
+        return view('admin.tdp-list.show', compact('logList'));
     }
 
     public function create()
     {
-        abort_if(Gate::denies('log_list'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('tdp_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $data['regions'] = Region::all();
         $data['districts'] = District::all();
@@ -40,7 +40,7 @@ class LogListController extends Controller
         $data['land_status'] = LandStatus::all();
         $data['species'] = Species::all();
 
-        return view('admin.log-list.create',$data);
+        return view('admin.tdp-list.create',$data);
     }
 
     public function store(Request $request)
@@ -81,7 +81,7 @@ class LogListController extends Controller
 
         $data['user_id'] = auth()->user()->id;
 
-        LogList::create($data);
+        TdpList::create($data);
 
         $data['regions'] = Region::all();
         $data['districts'] = District::all();
@@ -89,15 +89,15 @@ class LogListController extends Controller
         $data['land_status'] = LandStatus::all();
         $data['species'] = Species::all();
 
-        return redirect()->route('admin.log.list.index')->with('message','Log created successfully');
+        return redirect()->route('admin.tdp.list.index')->with('message','Log created successfully');
 
     }
 
-    public function destroy(LogList $logList)
+    public function destroy(TdpList $tdpList)
     {
-       // abort_if(Gate::denies('land_status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('tdp_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $logList->delete();
+        $tdpList->delete();
 
         return back();
 
