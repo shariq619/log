@@ -61,7 +61,13 @@
                 @endif
 
                 <label for="name">District.*</label>
-                <input type="text" id="district" name="district" class="form-control" value="{{ old('district') }}" >
+                <!-- <input type="text" id="district" name="district" class="form-control" value="{{ old('district') }}" > -->
+                <select name="district_id" id="district_id" class="form-control" >
+                    <option value="">Select District</option>
+                    @foreach($districts as $district )
+                        <option value="{{$district->id}}">{{$district->name}}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('district'))
                     <p class="help-block">
                         {{ $errors->first('district') }}

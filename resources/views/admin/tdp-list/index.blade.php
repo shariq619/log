@@ -57,6 +57,32 @@
                             </td>
 
                             <td>
+                                @php
+                                $statusLog = $log->status()->get()->last();
+                                $userroles = auth()->user()->roles()->pluck('title');
+                                $roles = [];
+                                foreach($userroles as $role){
+                                    $roles[] = $role;
+                                }
+                                @endphp
+                                @if(in_array($statusLog->status,['Submitted','Rejected','Disapproved']) && $log->user_id == auth()->user()->id)
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.tdp.list.edit', $log->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endif
+                                @if(in_array($statusLog->status,['Paid']) && $log->user_id == auth()->user()->id)
+                                    <a class="btn btn-xs btn-success" href="#">
+                                        Print
+                                    </a>
+                                @endif
+                                @if($log->user_id != auth()->user()->id)
+                                @can('tdp_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.tdp.list.edit', $log->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+                                @endif
+
                                 @can('tdp_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.tdp.list.show', $log->id) }}">
                                         {{ trans('global.view') }}
@@ -76,6 +102,27 @@
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
+                                @can('tdp_assignto')
+                                    @if($statusLog->status == "Submitted")
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.tdp.list.assign', $log->id) }}">Assign to KPPM</a>
+                                    @endif
+                                @endcan
+                                
+                                @if($statusLog->status == "Assigned" && in_array('KPPM',$roles))
+                                    <button type="button" class="btn btn-xs btn-info " data-toggle="modal" data-target="#exampleModal" data-status="Accepted" data-tdp_list_id="{{$log->id}}">Accept</button>
+
+                                    <button type="button" class="btn btn-xs btn-danger " data-toggle="modal" data-target="#exampleModal" data-status="Rejected" data-tdp_list_id="{{$log->id}}">Reject</button>
+                                @endif
+
+                                @if(in_array($statusLog->status,["Accepted"]) && in_array('DFO',$roles))
+                                    <button type="button" class="btn btn-xs btn-info " data-toggle="modal" data-target="#exampleModal" data-status="Approved" data-tdp_list_id="{{$log->id}}">Approved</button>
+
+                                    <button type="button" class="btn btn-xs btn-danger " data-toggle="modal" data-target="#exampleModal" data-status="Disapproved" data-tdp_list_id="{{$log->id}}">Disapproved</button>
+                                @endif
+                                @if(in_array($statusLog->status,["Approved"]) && in_array('Financial Officer',$roles))
+                                    <button type="button" class="btn btn-xs btn-info " data-toggle="modal" data-target="#exampleModal" data-status="Paid" data-tdp_list_id="{{$log->id}}">Paid</button>
+                                @endif
+
 
                             </td>
 
@@ -86,9 +133,50 @@
             </div>
         </div>
     </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reason</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="{{route('admin.tdp.list.statuslog')}}">
+        @csrf 
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea name="reason" class="form-control" id="reason"></textarea>
+            </div>
+            <input type="hidden" id="tdp_list_id" name="tdp_list_id" value="">
+            <input type="hidden" name="status" id="status" value="">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
 @section('scripts')
     @parent
+    <script>
+        jQuery(document).ready(function($){
+            $('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var status = button.data('status');
+                var tdp_list_id = button.data('tdp_list_id');
+                
+                var modal = $(this)
+                modal.find('.modal-title').text('Reason to ' + status)
+                modal.find('.modal-body #status').val(status)
+                modal.find('.modal-body #tdp_list_id').val(tdp_list_id)
+            })
+        })
+    </script>
 {{--    <script>--}}
 {{--        $(function () {--}}
 {{--            let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)--}}

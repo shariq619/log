@@ -9,6 +9,29 @@
         </div>
 
         <div class="card-body">
+            <div>
+                <form method="post" action="{{route('admin.tdp.list.assignedto')}}">
+                    @csrf
+                    <div class="form-group">
+                        <label id="assignto_id" class="form-label">Assign To</label>
+                        <select name="assignto_id" id="assignto_id" class="form-control" >
+                            <option value="">Select KPPM</option>
+                            @foreach($kppms as $k )
+                                <option value="{{$k->id}}">{{$k->name}}</option>
+                            @endforeach
+                        </select>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Remarks:</label>
+                        <textarea name="reason" class="form-control" id="reason"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="tdp_list_id" value="{{ $logList->id }}">
+                        <button type="submit" class="btn btn-primary">Assign</button>
+                    </div>
+                </form>
+            </div>
             <div class="mb-2">
                 <table class="table table-bordered table-striped">
                     <tbody>

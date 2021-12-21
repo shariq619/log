@@ -36,8 +36,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('tdp-list', 'TdpListController@index')->name('tdp.list.index');
     Route::get('tdp-list-view/{logList}', 'TdpListController@show')->name('tdp.list.show');
+    Route::get('tdp-list-edit/{logList}', 'TdpListController@edit')->name('tdp.list.edit');
+    Route::get('tdp-list-assign/{logList}', 'TdpListController@assignTo')->name('tdp.list.assign');
     Route::get('tdp-list-create', 'TdpListController@create')->name('tdp.list.create');
     Route::post('tdp-list', 'TdpListController@store')->name('tdp.list');
+    Route::post('tdp-list-update', 'TdpListController@update')->name('tdp.list.update');
+    Route::post('assignedto', 'TdpListController@assignedTo')->name('tdp.list.assignedto');
+    Route::post('statuslog', 'TdpListController@statuslog')->name('tdp.list.statuslog');
     Route::delete('tdp-list-delete/{tdpList}', 'TdpListController@destroy')->name('tdp.list.destroy');
 
 });

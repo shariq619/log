@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Notifications\UserNotify;
 use App\Role;
 use App\User;
+use App\District;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,8 +30,9 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::all()->pluck('title', 'id');
+        $districts = District::all();
 
-        return view('admin.users.create', compact('roles'));
+        return view('admin.users.create', compact('roles','districts'));
     }
 
     public function store(Request $request)
