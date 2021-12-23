@@ -17,6 +17,9 @@ class PermissionRoleTableSeeder extends Seeder
 
 
         Role::findOrFail(5)->permissions()->sync([17,38,40]);
+        Role::findOrFail(4)->permissions()->sync([17,40,42]);
+        Role::findOrFail(3)->permissions()->sync([17,40]);
+        Role::findOrFail(2)->permissions()->sync([17,40]);
 
     }
 }

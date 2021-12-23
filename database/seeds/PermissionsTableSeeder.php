@@ -264,6 +264,12 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-09-10 14:00:26',
                 'updated_at' => '2019-09-10 14:00:26',
             ],
+            [
+                'id'         => '42',
+                'title'      => 'tdp_assignto',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
 
 
         ];
