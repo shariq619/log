@@ -45,4 +45,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('statuslog', 'TdpListController@statuslog')->name('tdp.list.statuslog');
     Route::delete('tdp-list-delete/{tdpList}', 'TdpListController@destroy')->name('tdp.list.destroy');
 
+
+    Route::get('reports','ReportsController@index')->name('reports');
+    Route::get('reports/r1','ReportsController@rilnonril')->name('reports.r1');
+
 });

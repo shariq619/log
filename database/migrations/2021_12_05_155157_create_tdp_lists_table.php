@@ -39,6 +39,7 @@ class CreateTdpListsTable extends Migration
             $table->string('symbol');
             $table->string('defect_length');
             $table->string('defect_diameter');
+            $table->string('fee')->default('0');
             $table->timestamps();
         });
     }

@@ -124,6 +124,17 @@
                 </li>
             @endcan
 
+            @can('tdp_reports')
+                <li class="nav-item">
+                    <a href="{{route('admin.reports')}}" class="nav-link">
+                        <p>
+                            <i class="fa fa-list-alt" aria-hidden="true"></i>
+                            <span>Reports</span>
+                        </p>
+                    </a>
+                </li>
+            @endcan
+
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <p>
