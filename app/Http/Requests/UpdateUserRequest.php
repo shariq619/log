@@ -26,12 +26,11 @@ class UpdateUserRequest extends FormRequest
             'email'   => [
                 'required',
             ],
-            'roles.*' => [
+            'role.*' => [
                 'integer',
             ],
-            'roles'   => [
+            'role'   => [
                 'required',
-                'array',
             ],
         ];
 
