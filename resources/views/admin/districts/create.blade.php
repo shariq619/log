@@ -27,6 +27,13 @@
                             <option value="{{ $id }}">{{ $region }}</option>
                         @endforeach
                     </select>
+
+                    <label for="name">DFO.*</label>
+                    <select name="user_id" id="user_id" class="form-control">
+                        @foreach($dfos as $dfo)
+                            <option value="{{ $dfo->id }}">{{ $dfo->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div>

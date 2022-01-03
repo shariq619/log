@@ -33,8 +33,9 @@ class DistrictController extends Controller
         abort_if(Gate::denies('district_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $regions = Region::all()->pluck('name', 'id');
+        $dfos = User::whereHas('roles', function($q){$q->where('title', 'DFO');})->get();
 
-        return view('admin.districts.create', compact('regions'));
+        return view('admin.districts.create', compact('regions','dfos'));
     }
 
     public function store(Request $request)
@@ -56,7 +57,8 @@ class DistrictController extends Controller
         abort_if(Gate::denies('district_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $regions = Region::all()->pluck('name', 'id');
-        return view('admin.districts.edit', compact('regions', 'district'));
+        $dfos = User::whereHas('roles', function($q){$q->where('title', 'DFO');})->get();
+        return view('admin.districts.edit', compact('regions', 'district','dfos'));
     }
 
     public function update(UpdateDistrictRequest $request, District $district)

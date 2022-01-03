@@ -48,7 +48,7 @@ class UsersController extends Controller
             'applicant_or_internal' => 'required',
         ]);
 
-
+        
         $user = User::create($request->except('role') + ['password' => bcrypt('password')]);
         $user->roles()->sync($request->role);
 

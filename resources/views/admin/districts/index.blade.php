@@ -34,6 +34,9 @@
                             {{ trans('cruds.district.fields.region') }}
                         </th>
                         <th>
+                            DFO
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -51,7 +54,10 @@
                                 {{ $district->name ?? '' }}
                             </td>
                             <td>
-                                {{ $district->region_id ?? '' }}
+                                {{ $district->region->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $district->user->name ?? '' }}
                             </td>
                             <td>
                                 @can('district_show')

@@ -6,6 +6,7 @@ use App\District;
 use App\Http\Controllers\Controller;
 use App\LandStatus;
 use App\TdpList;
+use App\TdpLog;
 use App\TdpStatusLog;
 use App\Region;
 use App\User;
@@ -163,7 +164,41 @@ class TdpListController extends Controller
 
         $data['user_id'] = auth()->user()->id;
 
-        $tdpList = TdpList::create($data);
+        $tdplistData = [
+           'name' => $data['name'],
+           'license_no' => $data['license_no'],
+           'region_id' => $data['region_id'],
+           'district_id' => $data['district_id'],
+           'land_status' => $data['land_status'],
+           'reduced_impact_logging' => $data['reduced_impact_logging'],
+           'market' => $data['market'],
+           'place_of_scalling' => $data['place_of_scalling'],
+           'license_account_no' => $data['license_account_no'],
+           'date_scaled' => $data['date_scaled'],
+           'name_of_scaler' => $data['name_of_scaler'],
+           'owner_of_property_hammer_mark' => $data['registered_property_hammer_mark'],
+           'user_id'    => $data['user_id']
+        ];
+
+        $tdpList = TdpList::create($tdplistData);
+
+        foreach($data['serial_no'] as $k=>$v){
+            $tdpLogData = [
+                'serial_no' => $data['serial_no'][$k],
+                'log_no' => $data['log_no'][$k],
+                'species' => $data['species'][$k],
+                'diameter_1' => $data['diameter_1'][$k],
+                'diameter_2' => $data['diameter_2'][$k],
+                'diameter_mean' => $data['diameter_mean'][$k],
+                'symbol' => $data['symbol'][$k],
+                'defect_length' => $data['defect_length'][$k],
+                'defect_diameter' => $data['defect_diameter'][$k],
+                'length' => $data['length'][$k],
+                'tdp_list_id'=>$tdpList->id
+            ];
+            //dd($tdpLogData);
+            $tdp_log = TdpLog::create($tdpLogData);
+        }
 
         $statusData = ['status'=>'Submitted','reason'=>'','user_id'=>$data['user_id'],'tdp_list_id'=>$tdpList->id];
         TdpStatusLog::create($statusData);
