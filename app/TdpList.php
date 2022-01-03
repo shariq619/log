@@ -14,4 +14,8 @@ class TdpList extends Model
     public function status(){
         return $this->hasMany(TdpStatusLog::class);
     }
+
+    public function tdplogs(){
+        return $this->hasMany(TdpLog::class);
+    }
 }

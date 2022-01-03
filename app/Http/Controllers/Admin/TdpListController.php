@@ -72,16 +72,52 @@ class TdpListController extends Controller
            'length' => 'required',
         ]);
 
-        if($request->has('registered_property_hammer_mark')){
-            $fileName = time().'_'.$request->registered_property_hammer_mark->getClientOriginalName();
-            $filePath = $request->file('registered_property_hammer_mark')->storeAs('admin', $fileName, 'public');
-            $data['registered_property_hammer_mark'] = $filePath;
-        }
+        
         $data = $request->all();
         unset($data['id']);
+        $tdplistData = [
+            'name' => $data['name'],
+            'license_no' => $data['license_no'],
+            'region_id' => $data['region_id'],
+            'district_id' => $data['district_id'],
+            'land_status' => $data['land_status'],
+            'reduced_impact_logging' => $data['reduced_impact_logging'],
+            'market' => $data['market'],
+            'place_of_scalling' => $data['place_of_scalling'],
+            'license_account_no' => $data['license_account_no'],
+            'date_scaled' => $data['date_scaled'],
+            'name_of_scaler' => $data['name_of_scaler'],
+            'owner_of_property_hammer_mark' => $data['owner_of_property_hammer_mark'],
+            'user_id'    => $data['user_id']
+         ];
+         if($request->has('registered_property_hammer_mark')){
+            $fileName = time().'_'.$request->registered_property_hammer_mark->getClientOriginalName();
+            $filePath = $request->file('registered_property_hammer_mark')->storeAs('admin', $fileName, 'public');
+            $tdplistData['registered_property_hammer_mark'] = $filePath;
+        }
         $tdpList = TdpList::find($request->id);
         //dd($tdpList);
-        $tdpList->update($data);
+        $tdpList->update($tdplistData);
+
+        foreach($data['serial_no'] as $k=>$v){
+            $tdplogid = $data['tdplogid'][$k];
+            $tdpLogData = [
+                'serial_no' => $data['serial_no'][$k],
+                'log_no' => $data['log_no'][$k],
+                'species' => $data['species'][$k],
+                'diameter_1' => $data['diameter_1'][$k],
+                'diameter_2' => $data['diameter_2'][$k],
+                'diameter_mean' => $data['diameter_mean'][$k],
+                'symbol' => $data['symbol'][$k],
+                'defect_length' => $data['defect_length'][$k],
+                'defect_diameter' => $data['defect_diameter'][$k],
+                'length' => $data['length'][$k],
+                'tdp_list_id'=>$tdpList->id
+            ];
+            //dd($tdpLogData);
+            $tdp_log = TdpLog::find($tdplogid);
+            $tdp_log->update($tdpLogData);
+        }
         
         $statusData = ['status'=>'Submitted','reason'=>'','user_id'=>$data['user_id'],'tdp_list_id'=>$tdpList->id];
         TdpStatusLog::create($statusData);
@@ -155,11 +191,7 @@ class TdpListController extends Controller
            'length' => 'required',
         ]);
 
-        if($request->has('registered_property_hammer_mark')){
-            $fileName = time().'_'.$request->registered_property_hammer_mark->getClientOriginalName();
-            $filePath = $request->file('registered_property_hammer_mark')->storeAs('admin', $fileName, 'public');
-            $data['registered_property_hammer_mark'] = $filePath;
-        }
+        
 
 
         $data['user_id'] = auth()->user()->id;
@@ -180,6 +212,11 @@ class TdpListController extends Controller
            'registered_property_hammer_mark' => $data['registered_property_hammer_mark'],
            'user_id'    => $data['user_id']
         ];
+        if($request->has('registered_property_hammer_mark')){
+            $fileName = time().'_'.$request->registered_property_hammer_mark->getClientOriginalName();
+            $filePath = $request->file('registered_property_hammer_mark')->storeAs('admin', $fileName, 'public');
+            $tdplistData['registered_property_hammer_mark'] = $filePath;
+        }
 
         $tdpList = TdpList::create($tdplistData);
 
