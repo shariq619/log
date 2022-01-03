@@ -17,7 +17,7 @@ class CreateDistrictsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('region_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
