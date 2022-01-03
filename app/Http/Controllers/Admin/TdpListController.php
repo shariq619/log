@@ -176,7 +176,8 @@ class TdpListController extends Controller
            'license_account_no' => $data['license_account_no'],
            'date_scaled' => $data['date_scaled'],
            'name_of_scaler' => $data['name_of_scaler'],
-           'owner_of_property_hammer_mark' => $data['registered_property_hammer_mark'],
+           'owner_of_property_hammer_mark' => $data['owner_of_property_hammer_mark'],
+           'registered_property_hammer_mark' => $data['registered_property_hammer_mark'],
            'user_id'    => $data['user_id']
         ];
 
