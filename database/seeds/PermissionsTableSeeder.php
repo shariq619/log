@@ -276,6 +276,54 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-09-10 14:00:26',
                 'updated_at' => '2019-09-10 14:00:26',
             ],
+            [
+                'id'         => '44',
+                'title'      => 'logsize_access',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '45',
+                'title'      => 'logsize_create',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '46',
+                'title'      => 'logsize_edit',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '47',
+                'title'      => 'logsize_delete',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '48',
+                'title'      => 'lograte_access',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '49',
+                'title'      => 'lograte_create',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '50',
+                'title'      => 'lograte_edit',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
+            [
+                'id'         => '51',
+                'title'      => 'lograte_delete',
+                'created_at' => '2019-09-10 14:00:26',
+                'updated_at' => '2019-09-10 14:00:26',
+            ],
 
 
         ];

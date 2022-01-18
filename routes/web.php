@@ -49,4 +49,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('reports','ReportsController@index')->name('reports');
     Route::get('reports/r1','ReportsController@rilnonril')->name('reports.r1');
 
+    Route::delete('logsizes/destroy', 'LogSizeController@massDestroy')->name('logsizes.massDestroy');
+    Route::resource('logsizes','LogSizeController');
+
+    Route::delete('logrates/destroy', 'LogRateController@massDestroy')->name('logrates.massDestroy');
+    Route::resource('logrates','LogRateController');
+
 });

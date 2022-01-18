@@ -112,6 +112,26 @@
                 </li>
             @endcan
 
+            @can('logsize_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.logsizes.index") }}"
+                       class="nav-link {{ request()->is('admin/logsizes') || request()->is('admin/logsizes/*') ? 'active' : '' }}">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <span>Log Sizes</span>
+                    </a>
+                </li>
+            @endcan
+
+            @can('lograte_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.logrates.index") }}"
+                       class="nav-link {{ request()->is('admin/logrates') || request()->is('admin/logrates/*') ? 'active' : '' }}">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <span>Log Rates</span>
+                    </a>
+                </li>
+            @endcan
+
 
             @can('tdp_access')
                 <li class="nav-item">
