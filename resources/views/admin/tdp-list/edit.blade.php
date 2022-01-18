@@ -127,63 +127,65 @@
                     </div>
                 </div>
 
-
-                <div class="row mt-5">
-                    <div class="col">
-                        <input type="text" id="serial_no" placeholder="Serial No" name="serial_no" class="form-control"
-                               value="{{ $logList->serial_no }}" >
-                    </div>
-                    <div class="col">
-                        <input type="text" id="log_no" placeholder="Log  No" name="log_no"
-                               class="form-control" value="{{ $logList->log_no }}" >
-                    </div>
-                    <div class="col">
-                        <select name="species" id="species" class="form-control" >
-                            @foreach($species as $sp )
-                                <option value="{{$sp->id}}" <?php echo ($logList->species == $sp->id) ? 'selected="selected"' : '';?>>{{$sp->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-
-                <div class="row mt-5">
-                    <div class="col">
-                        <input type="text" id="length" placeholder="Length" name="length" class="form-control"
-                               value="{{ $logList->length }}" >
-                    </div>
-                    <div class="col">
-                        <input type="text" id="diameter_1" placeholder="Diameter 1" name="diameter_1"
-                               class="form-control" value="{{ $logList->diameter_1 }}" >
-                    </div>
-                    <div class="col">
-                        <input type="text" id="diameter_2" placeholder="Diameter 2" name="diameter_2"
-                               class="form-control" value="{{ $logList->diameter_2 }}" >
-                    </div>
-                    <div class="col">
-                        <input type="text" id="diameter_mean" placeholder="Diameter Mean" name="diameter_mean"
-                               class="form-control" value="{{ $logList->diameter_mean }}" >
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="row mt-5">
-                    <div class="col">
-                        <input type="text" id="symbol" placeholder="Symbol " name="symbol" class="form-control"
-                               value="{{ $logList->symbol }}" >
-                    </div>
-                    <div class="col">
-                        <input type="text" id="defect_length" placeholder="Defect Length" name="defect_length"
-                               class="form-control" value="{{ $logList->defect_length }}" >
-                    </div>
-                    <div class="col">
-                        <input type="text" id="defect_diameter" placeholder="Diameter 2" name="defect_diameter"
-                               class="form-control" value="{{ $logList->defect_diameter }}" >
-                    </div>
-                </div>
+                <table id="logs_table" class="table">
+                    <thead>
+                        <th>SN</th>
+                        <th>Log No</th>
+                        <th>Species</th>
+                        <th>L(M)</th>
+                        <th>D1(CM)</th>
+                        <th>D2(CM)</th>
+                        <th>Mean(CM)</th>
+                        <th>DS</th>
+                        <th>DL(M)</th>
+                        <th>DD(CM)</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @foreach($logList->tdplogs as $logs)
+                        <tr>
+                        <td>
+                            <input type="hidden" name="tdplogid[]" value="{{$logs->id}}">
+                            <input type="text" id="serial_no" placeholder="Serial No" name="serial_no[]" value="{{$logs->serial_no}}" class="form-control" >
+                        </td>
+                        <td>
+                            <input type="text" id="log_no" placeholder="Log  No" name="log_no[]"
+                               class="form-control"  value="{{$logs->log_no}}">
+                        </td>
+                        <td>
+                            <select name="species[]" id="species" class="form-control" >
+                                @foreach($species as $sp )
+                                    <option value="{{$sp->id}}" <?php echo ($logs->species == $sp->id) ? 'selected="selected"' : '';?>>{{$sp->name}}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" id="length" placeholder="Length" name="length[]" class="form-control" value="{{$logs->length}}"  >
+                        </td>
+                        <td>
+                            <input type="text" id="diameter_1" placeholder="Diameter 1" name="diameter_1[]" class="form-control" value="{{$logs->diameter_1}}" >
+                        </td>
+                        <td>
+                            <input type="text" id="diameter_2" placeholder="Diameter 2" name="diameter_2[]" class="form-control" value="{{$logs->diameter_2}}">
+                        </td>
+                        <td>
+                            <input type="text" id="diameter_mean" placeholder="Diameter Mean" name="diameter_mean[]" class="form-control"  value="{{$logs->diameter_mean}}">
+                        </td>
+                        <td>
+                            <input type="text" id="symbol" placeholder="Symbol " name="symbol[]" class="form-control" value="{{$logs->symbol}}">
+                        </td>
+                        <td>
+                            <input type="text" id="defect_length" placeholder="Defect Length" name="defect_length[]" class="form-control" value="{{$logs->defect_length}}" >
+                        </td>
+                        <td>
+                            <input type="text" id="defect_diameter" placeholder="Defect Diameter" name="defect_diameter[]" class="form-control" value="{{$logs->defect_diameter}}" >
+                        </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <a href="javascript:;" class="add_log">+Add another log</a>
+                <p>Note: SN=Serial No., L=Length, D1=Diameter 1, D2=Diameter 2, DS=Defect Symbol, DL=Defect Length, DD=Defect Diameter</p>
 
                 <div class="row mt-2">
                     <input type="hidden" name="id" value="{{$logList->id}}">
@@ -194,4 +196,57 @@
             </form>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        jQuery(document).ready(function($){
+            $(".add_log").on('click',function(){
+                $("#logs_table tbody").append(`
+                    <tr>
+                    <td>
+                        <input type="text" id="serial_no" placeholder="Serial No" name="serial_no[]" class="form-control" value="{{ old('serial_no') }}" >
+                    </td>
+                    <td>
+                        <input type="text" id="log_no" placeholder="Log  No" name="log_no[]"
+                            class="form-control" value="{{ old('log_no') }}" >
+                    </td>
+                    <td>
+                        <select name="species[]" id="species" class="form-control" >
+                            @foreach($species as $sp )
+                                <option value="{{$sp->id}}">{{$sp->name}}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" id="length" placeholder="Length" name="length[]" class="form-control"  value="{{ old('length') }}" >
+                    </td>
+                    <td>
+                        <input type="text" id="diameter_1" placeholder="Diameter 1" name="diameter_1[]" class="form-control" value="{{ old('diameter_1') }}" >
+                    </td>
+                    <td>
+                        <input type="text" id="diameter_2" placeholder="Diameter 2" name="diameter_2[]" class="form-control" value="{{ old('diameter_2') }}" >
+                    </td>
+                    <td>
+                        <input type="text" id="diameter_mean" placeholder="Diameter Mean" name="diameter_mean[]" class="form-control" value="{{ old('diameter_mean') }}" >
+                    </td>
+                    <td>
+                        <input type="text" id="symbol" placeholder="Symbol " name="symbol[]" class="form-control" value="{{ old('symbol') }}" >
+                    </td>
+                    <td>
+                        <input type="text" id="defect_length" placeholder="Defect Length" name="defect_length[]" class="form-control" value="{{ old('defect_length') }}" >
+                    </td>
+                    <td>
+                        <input type="text" id="defect_diameter" placeholder="Defect Diameter" name="defect_diameter[]" class="form-control" value="{{ old('defect_diameter') }}" >
+                    </td>
+                    <td><a href="javascript:;" class="delete_log">Delete</a></td>
+                    </tr>
+                `)
+            });
+
+            $(document).on('click','.delete_log',function(){
+                $(this).parents('tr').remove();
+            })
+
+        })
+    </script>
 @endsection

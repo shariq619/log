@@ -48,11 +48,17 @@
                     {{ trans('cruds.user.fields.password_helper') }}
                 </p>
             </div>
+            <label for="name">District.*</label>
+            <select name="district" id="district_id" class="form-control" >
+                <option value="">Select District</option>
+                @foreach($districts as $district )
+                    <option value="{{$district->id}}" {{ $district->id == $user->district ? 'selected' : '' }}>{{$district->name}}</option>
+                @endforeach
+            </select>
+            
             <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
-                <label for="roles">{{ trans('cruds.user.fields.roles') }}*
-                    <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all">{{ trans('global.deselect_all') }}</span></label>
-                <select name="roles[]" id="roles" class="form-control select2" multiple="multiple" required>
+                <label for="roles">Role.*</label>
+                <select name="role" id="roles" class="form-control select2" required>
                     @foreach($roles as $id => $roles)
                         <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
                     @endforeach

@@ -48,7 +48,7 @@ class UsersController extends Controller
             'applicant_or_internal' => 'required',
         ]);
 
-
+        
         $user = User::create($request->except('role') + ['password' => bcrypt('password')]);
         $user->roles()->sync($request->role);
 
@@ -67,16 +67,17 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::all()->pluck('title', 'id');
+        $districts = District::all();
 
         $user->load('roles');
 
-        return view('admin.users.edit', compact('roles', 'user'));
+        return view('admin.users.edit', compact('roles', 'user','districts'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        $user->update($request->except('role'));
+        $user->roles()->sync($request->role);
 
         return redirect()->route('admin.users.index');
 

@@ -16,9 +16,9 @@ class CreateTdpStatuslogsTable extends Migration
         Schema::create('tdp_status_logs', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->string('reason')->default(null);
+            $table->string('reason')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('assignto_id')->default(null);
+            $table->unsignedBigInteger('assignto_id')->nullable();
             $table->unsignedBigInteger('tdp_list_id');
             $table->timestamps();
         });
