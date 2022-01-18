@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
-                R1: RIL and Non RIL (RIL = Reduced Impact Logging) 
+                R7: Logs Production by Market
             </h4>
         </div>
 
@@ -15,9 +15,20 @@
                         <tr>
                             <th>Year</th>
                             <th>Month</th>
-                            <th>RIL(M3)</th>
-                            <th>Non RIL(M3)</th>
-                            <th>Total(M3)</th>
+                            <th>Region</th>
+                            <th>District</th>
+                            <th>Licencee</th>
+                            <th colspan="6" style="padding:0; text-align:center;">
+                                Diameter (M3)
+                                <table style="width:100%">
+                                    <td style="width:105px;">60cm<</td>
+                                    <td style="width:105px;">44cm-59cm</td>
+                                    <td style="width:105px;">30cm-43cm</td>
+                                    <td style="width:105px;">29cm></td>
+                                    <td style="width:105px;">Others</td>
+                                    <td style="width:105px;">Total<</td>
+                                </table>
+                            </th>
                         </tr>
                         <tr>
                             <td></td>
@@ -25,6 +36,12 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td style="width:105px;"></td>
+                            <td style="width:105px;"></td>
+                            <td style="width:105px;"></td>
+                            <td style="width:105px;"></td>
+                            <td style="width:105px;"></td>
+                            <td style="width:105px;"></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -32,8 +49,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                        </tr>
-                        <tr>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -43,6 +59,12 @@
                         <tr>
                             <th>Grand Total</th>
                             <td></td>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

@@ -45,14 +45,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('statuslog', 'TdpListController@statuslog')->name('tdp.list.statuslog');
     Route::delete('tdp-list-delete/{tdpList}', 'TdpListController@destroy')->name('tdp.list.destroy');
 
-
-    Route::get('reports','ReportsController@index')->name('reports');
-    Route::get('reports/r1','ReportsController@rilnonril')->name('reports.r1');
-
     Route::delete('logsizes/destroy', 'LogSizeController@massDestroy')->name('logsizes.massDestroy');
     Route::resource('logsizes','LogSizeController');
 
     Route::delete('logrates/destroy', 'LogRateController@massDestroy')->name('logrates.massDestroy');
     Route::resource('logrates','LogRateController');
+
+    Route::get('reports','ReportsController@index')->name('reports');
+    Route::get('reports/r1','ReportsController@rilnonril')->name('reports.r1');
+    Route::get('reports/r2','ReportsController@r2')->name('reports.r2');
+    Route::get('reports/r3','ReportsController@r3')->name('reports.r3');
+    Route::get('reports/r4','ReportsController@r4')->name('reports.r4');
+    Route::get('reports/r5','ReportsController@r5')->name('reports.r5');
+    Route::get('reports/r6','ReportsController@r6')->name('reports.r6');
+    Route::get('reports/r7','ReportsController@r7')->name('reports.r7');
+    Route::get('reports/r8','ReportsController@r8')->name('reports.r8');
+    Route::get('reports/r9','ReportsController@r9')->name('reports.r9');
+    Route::get('reports/r10','ReportsController@r10')->name('reports.r10');
+    Route::get('reports/r11','ReportsController@r11')->name('reports.r11');
+    Route::get('reports/r12','ReportsController@r12')->name('reports.r12');
 
 });

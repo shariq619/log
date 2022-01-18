@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
-                R1: RIL and Non RIL (RIL = Reduced Impact Logging) 
+                R4: Type of land-used by Region, District Licensee, Volume, Royalty 
             </h4>
         </div>
 
@@ -15,9 +15,11 @@
                         <tr>
                             <th>Year</th>
                             <th>Month</th>
-                            <th>RIL(M3)</th>
-                            <th>Non RIL(M3)</th>
-                            <th>Total(M3)</th>
+                            <th>Region</th>
+                            <th>District</th>
+                            <th>Licencee</th>
+                            <th>Volume (M3)</th>
+                            <th>Royalty ($)</th>
                         </tr>
                         <tr>
                             <td></td>
@@ -25,11 +27,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -39,10 +36,38 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Sub Total</th>
+                            <td></td>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td colspan="7"></td>
+                        </tr>
+                        <tr>
+                            <th>Sub Total</th>
+                            <td></td>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td colspan="7"></td>
                         </tr>
                         <tr>
                             <th>Grand Total</th>
                             <td></td>
+                            <th></th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

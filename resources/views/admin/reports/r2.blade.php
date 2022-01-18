@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
-                R1: RIL and Non RIL (RIL = Reduced Impact Logging) 
+                R2: Accumulated Production by Licensee 
             </h4>
         </div>
 
@@ -13,20 +13,15 @@
                 <table class="table table-bordered table-striped">
                     <tbody>
                         <tr>
-                            <th>Year</th>
-                            <th>Month</th>
+                            <th>Region</th>
+                            <th>District</th>
+                            <th>Licence</th>
                             <th>RIL(M3)</th>
                             <th>Non RIL(M3)</th>
                             <th>Total(M3)</th>
                         </tr>
                         <tr>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -43,6 +38,7 @@
                         <tr>
                             <th>Grand Total</th>
                             <td></td>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

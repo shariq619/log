@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
-                R1: RIL and Non RIL (RIL = Reduced Impact Logging) 
+                R10: Production Helicopter Logging
             </h4>
         </div>
 
@@ -13,11 +13,14 @@
                 <table class="table table-bordered table-striped">
                     <tbody>
                         <tr>
-                            <th>Year</th>
-                            <th>Month</th>
-                            <th>RIL(M3)</th>
-                            <th>Non RIL(M3)</th>
-                            <th>Total(M3)</th>
+                            <th>Region</th>
+                            <th>District</th>
+                            <th>AP No.</th>
+                            <th>AP Date</th>
+                            <th>Licensee</th>
+                            <th>Export (M3)</th>
+                            <th>Local Processing (M3)</th>
+                            <th>Total (M3)</th>
                         </tr>
                         <tr>
                             <td></td>
@@ -25,10 +28,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -39,10 +38,23 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <th>Grand Total</th>
                             <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="5">Grand Total</th>
                             <th></th>
                             <th></th>
                             <th></th>
