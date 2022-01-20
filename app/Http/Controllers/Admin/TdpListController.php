@@ -29,8 +29,13 @@ class TdpListController extends Controller
     public function show(TdpList $logList)
     {
         abort_if(Gate::denies('tdp_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $data['regions'] = Region::all();
+        $data['districts'] = District::all();
 
-        return view('admin.tdp-list.show', compact('logList'));
+        $data['land_status'] = LandStatus::all();
+        $data['species'] = Species::all();
+
+        return view('admin.tdp-list.show',compact('logList'))->with($data);
     }
     public function edit(TdpList $logList)
     {
